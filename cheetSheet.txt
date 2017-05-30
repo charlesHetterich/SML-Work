@@ -1,0 +1,96 @@
+*** REFERENCES ***************************************************
+all SML functions:	http://sml-family.org/Basis/top-level-chapter.html
+basic examples:		http://cs.fit.edu/~ryan/sml/intro.html
+Cornell course:		http://www.cs.cornell.edu/courses/cs312/2008sp/
+
+*** SOME BASICS **************************************************
+
+Types:
+	Int, Real, String, Char, unit, List
+
+negative Symbol: ~
+
+Int: 	+, -, *, div, mod
+Real: 	+, -, *, /
+
+^ : String String -> String
+	*** combines two strings ***
+
+char ex: #”a”
+	*** must be 1 string ***
+
+Real Ax10^B: 12e3
+	*** returns 12000.0 ***
+
+List: [1,2,3,4]
+	*** must all be of same type ***
+
+nil: []
+	*** empty list ***
+
+List:
+	@   - [1,2]@[3,4] -> [1,2,3,4]	**append**
+	::  - 1::[2,3,4] -> [1,2,3,4]	**cons**
+
+Records **struct**: {a=123, thing=“apple”}
+	-field selection: #a {a=123, thing=“apple”}
+		*** returns 123 ***
+
+tuple: (123, “apple” #”r”)
+
+*** LOGIC ********************************************************
+Normal	SML
+==	=
+<	<
+>	>
+<=	<=
+>=	>=
+!=	<>
+!	not
+
+&&	andalso
+||	orelse
+
+*** IF STATEMENT *************************************************
+Normal:
+if (x == 2){
+   return x + 2;
+}
+else {
+   return x - 2;
+}
+
+SML:
+if x = 2 then x+2 else x-2;
+
+*** FUNCTIONS ****************************************************
+fun f(n) = n*n **define function n**
+(fn n => n*n) **return lambda function**
+
+similar way to define function f:
+	- val f = (fn n => n*n)
+		*** defines value of f as the return from the lambda function ***
+
+*** LOCAL VARIABLES **********************************************
+LET & LOCAL:
+let: returns expression
+	let
+	   val c = 22
+	in
+	   (c * 4) + 8
+	end;
+		*** return: val it = 96 : int ***
+
+local: declaration
+	local
+	   val c = 22
+	in
+	   val d = (c * 4) + 8
+	end;
+		*** return: val d = 96 : int ***
+
+*** CASTING ******************************************************
+real(4)	    : int  -> real
+ord(#”a”)   : char -> int
+chr(97)     : int  -> char
+str(#”a”)   : char -> string
